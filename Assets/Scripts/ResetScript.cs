@@ -15,7 +15,6 @@ public class ResetScript : MonoBehaviour
             //code to get scene where reset occured, just in case;
             sceneMemory = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            Debug.Log("should reset");
         }
     }
 }

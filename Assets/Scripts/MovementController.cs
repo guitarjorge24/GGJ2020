@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
    [SerializeField]
     private GameObject playerChar;

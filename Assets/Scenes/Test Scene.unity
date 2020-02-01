@@ -7525,6 +7525,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 210957734275412168, guid: 3a5b7e992e6a6cc42b72c54f4183f4f8,
+        type: 3}
+      propertyPath: m_Mass
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 210957734275412168, guid: 3a5b7e992e6a6cc42b72c54f4183f4f8,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 210957734275412168, guid: 3a5b7e992e6a6cc42b72c54f4183f4f8,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2b5369c9db7f74a2391468f0920c4ffc, type: 2}
+    - target: {fileID: 210957734275412169, guid: 3a5b7e992e6a6cc42b72c54f4183f4f8,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2b5369c9db7f74a2391468f0920c4ffc, type: 2}
     - target: {fileID: 210957734275412171, guid: 3a5b7e992e6a6cc42b72c54f4183f4f8,
         type: 3}
       propertyPath: m_Name

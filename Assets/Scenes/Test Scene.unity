@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 234496804}
   - component: {fileID: 234496805}
   - component: {fileID: 234496806}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7233,6 +7233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106597706912339069, guid: ccc6e84439681aa4aabc3635721b310f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3106597706912339070, guid: ccc6e84439681aa4aabc3635721b310f,
         type: 3}

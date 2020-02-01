@@ -4,41 +4,45 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-   [SerializeField]
-    private GameObject playerChar;
+	public Rigidbody2D _playerRigidbody;
 
-    private float upDown = 0;
-    private float leftRight = 0;
-    public bool UpOrDownFacing, isRight, isUp = true;
-    //updates on fixed intervals, NOT FRAMERATE DEPENDANT
-    void FixedUpdate()
-    {
-        //get input
-        upDown = Input.GetAxis("Vertical");
-        leftRight = Input.GetAxis("Horizontal");
-        //move in all 4 directions
-        transform.Translate(Vector3.up *(upDown * 0.1f));
-        transform.Translate(Vector3.right * (leftRight *0.1f));
-        //logic for most recent direction for use in animation
-        if(upDown > 0)
-        {
-            UpOrDownFacing = true;
-            isUp = false;
-        }
-        if (upDown > 0)
-        {
-            UpOrDownFacing = true;
-            isUp = false;
-        }
-        if (leftRight > 0)
-        {
-            UpOrDownFacing = false;
-            isRight = false;
-        }
-        if (leftRight < 0)
-        {
-            UpOrDownFacing = false;
-            isRight = true;
-        }
-    }
+	[SerializeField] private float _runSpeed = 5f;
+
+	void Start()
+	{
+		_playerRigidbody = GetComponent<Rigidbody2D>();
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		Run();
+	}
+
+
+
+	private void Run()
+	{
+		float horizontalControlThrow = Input.GetAxis("Horizontal"); //value is between -1 to +1
+
+		if (horizontalControlThrow != 0)
+		{
+			Vector2 playerVelocity = new Vector2(horizontalControlThrow * _runSpeed, 0); //velocity is measured in units per second
+			_playerRigidbody.velocity = playerVelocity;
+		}
+		else
+		{
+			float verticalControlThrow = Input.GetAxis("Vertical"); //value is between -1 to +1
+			Vector2 playerVelocity = new Vector2(0, verticalControlThrow * _runSpeed); //velocity is measured in units per second
+			_playerRigidbody.velocity = playerVelocity;
+		}
+
+
+
+		//Set Animation State
+		//bool playerHasHorizontalSpeed = Mathf.Abs(_playerRigidbody.velocity.x) > Mathf.Epsilon;
+		//_playerAnimator.SetBool("Running", playerHasHorizontalSpeed);
+		//_playerAnimatorGlow.SetBool("Running", playerHasHorizontalSpeed);
+
+	}
 }

@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    public float timer;
+    public static float timer;
+    public float visibleTimer;
 
+    private void Start()
+    {
+        timer = 400;
+    }
     private void Update()
     {
         timer -= Time.deltaTime;
+        visibleTimer = timer;
         if (timer < 0)
         {
             SceneManager.LoadScene("GameOver");

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviour
 {
     public static bool isGameActive = true;
     public GameObject pauseMenuObject;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +31,19 @@ public class PauseScript : MonoBehaviour
         {
             if (Input.GetKeyUp("escape"))
             {
-                isGameActive = true;
-                pauseMenuObject.SetActive(false);
+                ContinueGame();
             }
         }
+    }
+    public void ContinueGame()
+    {
+        isGameActive = true;
+        pauseMenuObject.SetActive(false);
+    }
+
+    public void ReturnToMenu()
+    {
+        isGameActive = true;
+        SceneManager.LoadScene("MainMenu");
     }
 }

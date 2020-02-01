@@ -9,12 +9,17 @@ public class ResetScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Reset"))
+        if(Input.GetButtonDown("Fire3"))
         {
-            //begin resetting
-            //code to get scene where reset occured, just in case;
-            sceneMemory = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetTrigger();
         }
+    }
+    public void ResetTrigger()
+    {
+        //begin resetting
+        //code to get scene where reset occured, just in case;
+        sceneMemory = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        PauseScript.isGameActive = true;
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class UIScript : MonoBehaviour
 {
-    
-    private float BatterySeconds = 400f;
     public string BatteryString;
+    public Text timerText;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,9 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if(PauseScript.isGameActive == true)
         {
-            //BatteryString = 
+            BatteryString = GameState.timer.ToString("F2");
 
+            timerText.text = BatteryString;
         }
     }
 }

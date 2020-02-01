@@ -8,7 +8,6 @@ public class BatteryConnection : MonoBehaviour
 {
 
     public GameObject connectsWith;
-    public Sprite BatterySprite;
 
     private void Start()
     {

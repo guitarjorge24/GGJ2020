@@ -10,14 +10,14 @@ public class SnareTrap : Trap
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerMove playerMove = collision.GetComponent<PlayerMove>();
+            MovementController playerMove = collision.GetComponent<MovementController>();
             StartCoroutine(SnareTimer(playerMove));
 
             playerMove.enabled = false;
         }
     }
 
-    IEnumerator SnareTimer(PlayerMove playerMove)
+    IEnumerator SnareTimer(MovementController playerMove)
     {
         playerMove.enabled = false;
         yield return new WaitForSeconds(snareTimer);

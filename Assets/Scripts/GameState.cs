@@ -14,8 +14,11 @@ public class GameState : MonoBehaviour
     }
     private void Update()
     {
-        timer -= Time.deltaTime;
-        visibleTimer = timer;
+        if (PauseScript.isGameActive == true)
+        {
+            timer -= Time.deltaTime;
+            visibleTimer = timer;
+        }
         if (timer < 0)
         {
             SceneManager.LoadScene("GameOver");

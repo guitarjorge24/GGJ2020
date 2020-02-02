@@ -7,19 +7,13 @@ public class UIScript : MonoBehaviour
 {
     public string BatteryString;
     public Text timerText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         if(PauseScript.isGameActive == true)
         {
-            BatteryString = GameState.timer.ToString("F2");
-
+            BatteryString = GameState.timer.ToString("F0");
             timerText.text = BatteryString;
         }
     }

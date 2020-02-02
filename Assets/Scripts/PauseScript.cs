@@ -25,8 +25,7 @@ public class PauseScript : MonoBehaviour
                 isGameActive = false;
                 pauseMenuObject.SetActive(true);
             }
-        }
-           
+        }  
         else if (isGameActive == false)
         {
             if (Input.GetKeyUp("escape"))

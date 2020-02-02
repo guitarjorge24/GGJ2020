@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class SnareTrap : Trap
 {
-    public float snareTimer = 3;
+    public float playerSnareTimer = 2;
+    public float janitorSnareTimer = 3;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,22 +17,24 @@ public class SnareTrap : Trap
         }
         else if (collision.CompareTag("Janitor"))
         {
-            //JanitorController janitorController = collision.GetComponent<JanitorController>();
-            //StartCoroutine(JanitorSnareTimer(janitorController));
+			Debug.Log("Janitor snared");
+			AIPath janitorMovement = collision.GetComponent<AIPath>();
+            StartCoroutine(JanitorSnareTimer(janitorMovement));
         }
     }
 
-    IEnumerator JanitorSnareTimer()//JanitorController janitorController)
+    IEnumerator JanitorSnareTimer(AIPath janitorMovement)//JanitorController janitorController)
     {
-        //playerMove.enabled = false;
-        yield return new WaitForSeconds(snareTimer);
-        //playerMove.enabled = true;
-    }
+		janitorMovement.enabled = false;
+        yield return new WaitForSeconds(janitorSnareTimer);
+		janitorMovement.enabled = true;
+	}
 
-    IEnumerator SnareTimer(MovementController playerMove)
+	IEnumerator SnareTimer(MovementController playerMove)
     {
         playerMove.enabled = false;
-        yield return new WaitForSeconds(snareTimer);
+		playerMove.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero; //necessary to prevent player from continuing to go off on the last direction it was moving (like ice floor)
+        yield return new WaitForSeconds(playerSnareTimer);
         playerMove.enabled = true;
     }
 

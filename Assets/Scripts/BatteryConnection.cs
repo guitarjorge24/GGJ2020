@@ -28,7 +28,7 @@ public class BatteryConnection : MonoBehaviour
 
     private void OnBatteryConnected()
     {
-        SceneManager.LoadScene("EndScene"); // Load next level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Load next level
     }
 
 }

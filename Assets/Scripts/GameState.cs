@@ -10,7 +10,7 @@ public class GameState : MonoBehaviour
 
     private void Start()
     {
-        timer = 400;
+        timer = 200;
     }
     private void Update()
     {

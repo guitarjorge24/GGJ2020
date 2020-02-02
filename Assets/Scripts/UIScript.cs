@@ -13,12 +13,12 @@ public class UIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        batteryBar.value = GameState.timer / 400;
+        batteryBar.value = GameState.timer / 200;
         if(PauseScript.isGameActive == true)
         {
             batteryString = GameState.timer.ToString("F0");
             timerText.text = batteryString;
-            if(GameState.timer < 100)
+            if(GameState.timer < 50)
             {
                 batteryIcon.color = Color.red;
                 batteryBarFill.color = Color.red;

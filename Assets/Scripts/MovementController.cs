@@ -11,10 +11,13 @@ public class MovementController : MonoBehaviour
 	public facingDirection playerDirection;
 
 	[SerializeField] private float _runSpeed = 5f;
+	private Animator _playerAnimator;
+
 
 	void Start()
 	{
 		_playerRigidbody = GetComponent<Rigidbody2D>();
+		_playerAnimator = GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -59,6 +62,7 @@ public class MovementController : MonoBehaviour
 			else
 			{
 				playerDirection = facingDirection.down;
+				//_playerAnimator.SetBool
 
 			}
 		}

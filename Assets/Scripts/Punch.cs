@@ -21,10 +21,13 @@ public class Punch : MonoBehaviour
 	public CircleCollider2D punchLeftCollider;
 	public CircleCollider2D punchRightCollider;
 
+	private Animator _playerAnimator;
+
 
 	void Start()
 	{
 		playerMovement = GetComponentInParent<MovementController>();
+		_playerAnimator = GetComponentInParent<Animator>();
 	}
 
 
@@ -44,16 +47,19 @@ public class Punch : MonoBehaviour
 			{
 				case MovementController.facingDirection.up:
 					StartCoroutine(PunchAttack(punchUpCollider, Vector2.up));
-					//play punch up animation too
+					_playerAnimator.SetTrigger("PunchDown");
 					break;
 				case MovementController.facingDirection.down:
 					StartCoroutine(PunchAttack(punchDownCollider, Vector2.down));
+					_playerAnimator.SetTrigger("PunchDown");
 					break;
 				case MovementController.facingDirection.left:
 					StartCoroutine(PunchAttack(punchLeftCollider, Vector2.left));
+					_playerAnimator.SetTrigger("PunchDown");
 					break;
 				case MovementController.facingDirection.right:
 					StartCoroutine(PunchAttack(punchRightCollider, Vector2.right));
+					_playerAnimator.SetTrigger("PunchDown");
 					break;
 			}
 

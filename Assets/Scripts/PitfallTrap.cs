@@ -8,12 +8,15 @@ public class PitfallTrap : Trap
     private SpriteRenderer spriteRenderer;
     public Sprite TrapWithJanitor;
     private bool trapEnabled = true;
+	private Animator _playerAnimator;
 
-    void Start()
+	void Start()
     {
         startPosition = GameObject.FindWithTag("StartPoint").transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+		_playerAnimator = GetComponent<Animator>();
+
+	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

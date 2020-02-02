@@ -19,7 +19,8 @@ public class PitfallTrap : Trap
         }
 		else if (collision.gameObject.CompareTag("Janitor"))
 		{
-			Debug.Log("Janitor fell!");
+            collision.gameObject.SetActive(false);
 		}
     }
+
 }

@@ -19,13 +19,13 @@ public class SnareTrap : Trap
             //StartCoroutine(JanitorSnareTimer(janitorController));
         }
     }
+
     IEnumerator JanitorSnareTimer()//JanitorController janitorController)
     {
         //playerMove.enabled = false;
         yield return new WaitForSeconds(snareTimer);
         //playerMove.enabled = true;
     }
-
 
     IEnumerator SnareTimer(MovementController playerMove)
     {

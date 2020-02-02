@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class JanitorSpawner : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class JanitorSpawner : MonoBehaviour
         {
             GameObject janitor = Instantiate(janitorPrefab) as GameObject;
             janitor.transform.position = transform.position;
+            AIDestinationSetter dest = janitor.GetComponent<AIDestinationSetter>();
+            dest.target = collision.transform;
 
             Destroy(gameObject);
         }

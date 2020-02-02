@@ -17,9 +17,9 @@ public class SnareTrap : Trap
         }
         else if (collision.CompareTag("Janitor"))
         {
-			Debug.Log("Janitor snared");
 			AIPath janitorMovement = collision.GetComponent<AIPath>();
             StartCoroutine(JanitorSnareTimer(janitorMovement));
+			//#ToDo: play janitor snare animation
         }
     }
 

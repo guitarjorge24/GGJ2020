@@ -17,5 +17,9 @@ public class PitfallTrap : Trap
         {
             collision.gameObject.transform.position = startPosition;
         }
+		else if (collision.gameObject.CompareTag("Janitor"))
+		{
+			Debug.Log("Janitor fell!");
+		}
     }
 }

@@ -7,6 +7,7 @@ public class PitfallTrap : Trap
     private Vector2 startPosition;
     private SpriteRenderer spriteRenderer;
     public Sprite TrapWithJanitor;
+    private bool trapEnabled = true;
 
     void Start()
     {
@@ -16,6 +17,11 @@ public class PitfallTrap : Trap
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!trapEnabled)
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.position = startPosition;
@@ -25,7 +31,7 @@ public class PitfallTrap : Trap
             collision.gameObject.SetActive(false);
             Destroy(collision.gameObject);
             spriteRenderer.sprite = TrapWithJanitor;
-            enabled = false;
+            trapEnabled = false;
 		}
     }
 

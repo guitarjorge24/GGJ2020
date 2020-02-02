@@ -21,13 +21,14 @@ public class BatteryConnection : MonoBehaviour
     {
         if (collision.gameObject == connectsWith)
         {
+            Debug.LogError("" + collision.gameObject.name);
             OnBatteryConnected();
         }
     }
 
     private void OnBatteryConnected()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Load next level
+        SceneManager.LoadScene("EndScene"); // Load next level
     }
 
 }

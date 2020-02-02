@@ -5,10 +5,13 @@ using UnityEngine;
 public class PitfallTrap : Trap
 {
     private Vector2 startPosition;
+    private SpriteRenderer spriteRenderer;
+    public Sprite TrapWithJanitor;
 
     void Start()
     {
         startPosition = GameObject.FindWithTag("StartPoint").transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +23,9 @@ public class PitfallTrap : Trap
 		else if (collision.gameObject.CompareTag("Janitor"))
 		{
             collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
+            spriteRenderer.sprite = TrapWithJanitor;
+            enabled = false;
 		}
     }
 

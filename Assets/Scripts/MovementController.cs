@@ -6,6 +6,10 @@ public class MovementController : MonoBehaviour
 {
 	public Rigidbody2D _playerRigidbody;
 
+
+	public enum facingDirection {left, right, up, down};
+	public facingDirection playerDirection;
+
 	[SerializeField] private float _runSpeed = 5f;
 
 	void Start()
@@ -17,6 +21,7 @@ public class MovementController : MonoBehaviour
 	void Update()
 	{
 		Run();
+		CheckFacingDirection();
 	}
 
 
@@ -24,17 +29,42 @@ public class MovementController : MonoBehaviour
 	private void Run()
 	{
 		float horizontalControlThrow = Input.GetAxis("Horizontal"); //value is between -1 to +1
+		float verticalControlThrow = Input.GetAxis("Vertical"); //value is between -1 to +1
 
 		if (horizontalControlThrow != 0)
 		{
 			Vector2 playerVelocity = new Vector2(horizontalControlThrow * _runSpeed, 0); //velocity is measured in units per second
 			_playerRigidbody.velocity = playerVelocity;
+
+			if (horizontalControlThrow > 0)
+			{
+				playerDirection = facingDirection.right;
+			}
+			else
+			{
+				playerDirection = facingDirection.left;
+
+			}
+		}
+		else if (verticalControlThrow != 0)
+		{
+			Vector2 playerVelocity = new Vector2(0, verticalControlThrow * _runSpeed); //velocity is measured in units per second
+			_playerRigidbody.velocity = playerVelocity;
+
+			if (verticalControlThrow > 0)
+			{
+				playerDirection = facingDirection.up;
+
+			}
+			else
+			{
+				playerDirection = facingDirection.down;
+
+			}
 		}
 		else
 		{
-			float verticalControlThrow = Input.GetAxis("Vertical"); //value is between -1 to +1
-			Vector2 playerVelocity = new Vector2(0, verticalControlThrow * _runSpeed); //velocity is measured in units per second
-			_playerRigidbody.velocity = playerVelocity;
+			_playerRigidbody.velocity = Vector2.zero;
 		}
 
 
@@ -43,6 +73,11 @@ public class MovementController : MonoBehaviour
 		//bool playerHasHorizontalSpeed = Mathf.Abs(_playerRigidbody.velocity.x) > Mathf.Epsilon;
 		//_playerAnimator.SetBool("Running", playerHasHorizontalSpeed);
 		//_playerAnimatorGlow.SetBool("Running", playerHasHorizontalSpeed);
+
+	}
+
+	private void CheckFacingDirection()
+	{
 
 	}
 }
